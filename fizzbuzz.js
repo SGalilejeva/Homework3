@@ -16,7 +16,20 @@ mypar.classList.add("warning-text");
 
 mypar.id = "hopefully-unique";
 
+function addElement(parent, id, tag = 'p', content = null, classList = null) {
+    const elem = document.createElement(tag);
+    elem.id = id;
+    if (content) elem.innerText = content;
+    elem.classList.add(classList);
+    parent.appendChild(elem);
+}
 
+addElement(app, "mynewelement", "p", "Lorems");
+addElement(app, "mynewelement2", "p", "Lorems");
+
+for (let i = 1; i < 101; i++) {
+    addElement(app, "myid" + i, "div", "MyText" + i);
+}
 
 
 
