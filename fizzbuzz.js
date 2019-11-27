@@ -36,6 +36,8 @@ for (let i = 1; i < 101; i++) {
     else console.log(i);
 }
 
+const myinp1 = document.getElementById('val1');
+const myinp2 = document.getElementById('val2');
 
 
 
