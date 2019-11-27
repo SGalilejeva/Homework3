@@ -22,6 +22,7 @@ function addElement(parent, id, tag = 'p', content = null, classList = null) {
     if (content) elem.innerText = content;
     elem.classList.add(classList);
     parent.appendChild(elem);
+    return elem;
 }
 
 addElement(app, "mynewelement", "p", "Lorems");
