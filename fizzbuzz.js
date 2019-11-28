@@ -1,44 +1,46 @@
 console.log("Running my FIZZ BUZZ!");
 
-const app = document.querySelector('#app');
+const generators = document.getElementById('generator');
+const cleaneris = document.getElementById('cleaner');
+const start = document.getElementById('starts');
+const stop = document.getElementById('stops');
+const fizzs = document.getElementById('fizz');
+const buzzs = document.getElementById('buzz');
 
-const newDiv = document.createElement('div');
-newDiv.innerText = "I am a new Div";
-app.appendChild(newDiv);
+const container = document.querySelector('#container');
 
-app.appendChild(document.createElement('p'));
+generators.onclick = () => {
+    const starts = parseInt(start.value);
+    const stops = parseInt(stop.value);
+    const fizz = parseInt(fizzs.value);
+    const buzz = parseInt(buzzs.value);
 
-const mypar = app.querySelector('p');
-mypar.innerText = "Lorem Ipsem";
-
-// mypar.style.backgroundColor = "red";
-mypar.classList.add("warning-text");
-
-mypar.id = "hopefully-unique";
-
-function addElement(parent, id, tag = 'p', content = null, classList = null) {
-    const elem = document.createElement(tag);
-    elem.id = id;
-    if (content) elem.innerText = content;
-    elem.classList.add(classList);
-    parent.appendChild(elem);
-    return elem;
+    for (let i = starts; i <= stops; i++) {
+        const miniDiv = document.createElement('div');
+        miniDiv.id = "miniDiv" + i;
+        if (i % fizz === 0 && i % buzz === 0) {
+            miniDiv.innerText = i + "  FizzBuzz";
+            miniDiv.classList.add("fizzbuzz");
+        } else if (i % buzz === 0) {
+            miniDiv.innerText = i + "  Buzz";
+            miniDiv.classList.add("buzz");
+        } else if (i % fizz === 0) {
+            miniDiv.innerText = i + "  Fizz";
+            miniDiv.classList.add("fizz");
+        } else {
+            miniDiv.innerText = i;
+            miniDiv.classList.add("regular");
+        }
+        container.appendChild(miniDiv);
+    }
+    generators.disabled = true;
+};
+cleaneris.onclick = () => {
+    let miniDiv = document.getElementById("container");
+    while (miniDiv.firstChild) {
+        miniDiv.removeChild(miniDiv.firstChild);
+    }
+    generators.disabled = false;
 }
-
-addElement(app, "mynewelement", "p", "Lorems");
-addElement(app, "mynewelement2", "p", "Lorems");
-
-for (let i = 1; i < 101; i++) {
-    addElement(app, "myid" + i, "div", "MyText" + i);
-    if (i % 15 === 0) console.log("Fizz Buzz");
-    else if (i % 3 === 0) console.log("Fizz");
-    else if (i % 5 === 0) console.log("Buzz");
-    else console.log(i);
-}
-
-const myinp1 = document.getElementById('val1');
-const myinp2 = document.getElementById('val2');
-
-
 
 
